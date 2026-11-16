@@ -18,7 +18,7 @@ ingress_port: 3000
 # Stream request bodies so large manual/photo uploads are not buffered by the
 # Supervisor before they reach the app.
 ingress_stream: true
-panel_icon: mdi:home-cog
+panel_icon: mdi:home-automation
 panel_title: Home Operations
 
 # Optional direct access for API clients and AI agents. Off by default; enable
