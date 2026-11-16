@@ -1,0 +1,33 @@
+services:
+  home-operations:
+    build: .
+    image: home-operations:local
+    container_name: home-operations
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      DATA_DIR: /data
+      PORT: "3000"
+      HOST: "0.0.0.0"
+      # Leave empty to run without API authentication on a trusted LAN.
+      HOME_OPERATIONS_API_KEY: ${HOME_OPERATIONS_API_KEY:-}
+      # Set when the app is served from a stable public URL (for /llms.txt and
+      # the API docs). Not needed for direct access or Home Assistant ingress.
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-}
+      SEED_SECTIONS: ${SEED_SECTIONS:-1}
+    volumes:
+      - home-operations-data:/data
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:3000/api/v1/health').then((r) => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  home-operations-data:

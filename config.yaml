@@ -1,0 +1,47 @@
+name: Home Operations
+version: "1.2.0"
+slug: home_operations
+description: "House operations and maintenance manual: appliances, service history, manuals and print-ready documentation."
+url: https://github.com/David-Woodthorpe/homeoperations
+arch:
+  - amd64
+  - aarch64
+init: false
+startup: application
+boot: auto
+timeout: 30
+
+# Serve the web UI through the Home Assistant sidebar. Ingress removes the need
+# to expose a port or manage a separate login.
+ingress: true
+ingress_port: 3000
+# Stream request bodies so large manual/photo uploads are not buffered by the
+# Supervisor before they reach the app.
+ingress_stream: true
+panel_icon: mdi:home-cog
+panel_title: Home Operations
+
+# Optional direct access for API clients and AI agents. Off by default; enable
+# it on the add-on page and set an API key before exposing it.
+ports:
+  3000/tcp: null
+ports_description:
+  3000/tcp: Direct web and API access (optional)
+
+# /api/v1/health is exempt from API-key authentication so the watchdog works.
+watchdog: http://[HOST]:[PORT:3000]/api/v1/health
+
+# Stop the app while Home Assistant snapshots /data so SQLite is copied safely.
+backup: cold
+
+environment:
+  DATA_DIR: /data
+  PORT: "3000"
+  HOST: "0.0.0.0"
+
+options:
+  api_key: ""
+  public_url: ""
+schema:
+  api_key: password
+  public_url: str?
