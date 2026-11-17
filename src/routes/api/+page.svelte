@@ -133,6 +133,44 @@
 
 <section class="card" style="margin-bottom: 22px;">
   <div class="card-head">
+    <h2>Build an agent skill</h2>
+    <span class="hint">Point another AI agent at these URLs</span>
+  </div>
+  <div class="card-body">
+    <div class="prose" style="font-size: 13.5px; margin-bottom: 14px;">
+      <p>
+        <a href="/agent.md" target="_blank" rel="noopener"><strong>/agent.md</strong></a> is the
+        entrypoint: it tells an agent what the system is, what to read, and what a good skill must
+        contain. <a href="/skill.md" target="_blank" rel="noopener"><strong>/skill.md</strong></a> is
+        a complete generic skill to adapt. The discovery manifest is at
+        <a href="/.well-known/home-operations.json" target="_blank" rel="noopener">
+          <code class="inline">/.well-known/home-operations.json</code></a>.
+      </p>
+      <p>Give the agent this prompt:</p>
+    </div>
+    <pre class="code">{`Read ${data.origin}/agent.md and build a skill so you can use our
+Home Operations house manual. Use ${data.origin}/skill.md as the starting
+template and ${data.origin}/llms.txt as the canonical API reference.
+Do not invent endpoints or an appliance id, and do not put any secrets in the skill.`}</pre>
+    <div class="row" style="margin-top: 14px;">
+      <a class="btn btn-sm" href="/agent.md" target="_blank" rel="noopener">
+        <Icon name="file" size={14} />
+        Open agent.md
+      </a>
+      <a class="btn btn-sm" href="/skill.md" target="_blank" rel="noopener">
+        <Icon name="download" size={14} />
+        Open skill.md
+      </a>
+      <a class="btn btn-sm btn-ghost" href="/llms.txt" target="_blank" rel="noopener">
+        <Icon name="bookOpen" size={14} />
+        llms.txt
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="card" style="margin-bottom: 22px;">
+  <div class="card-head">
     <h2>Endpoints</h2>
     <span class="hint">Everything is under <span class="mono">{data.base}</span></span>
   </div>

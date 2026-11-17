@@ -60,7 +60,12 @@ suitable for `/llms.txt`.
 The add-on exposes the same local API described in the in-app **API & AI** page
 and in `/llms.txt`:
 
-- `GET /api/v1/meta` — sections, categories and statistics.
+- `GET /agent.md` — an entrypoint that tells an AI agent how to build a skill for
+  this manual.
+- `GET /skill.md` — a ready-made generic skill with the instance URL filled in.
+- `GET /.well-known/home-operations.json` — a discovery manifest.
+
+API endpoints:
 - `GET /api/v1/appliances` and `GET /api/v1/appliances/{id}` — read the register,
   notes, manuals and service history.
 - `POST /api/v1/appliances` — create an appliance from a make and model.

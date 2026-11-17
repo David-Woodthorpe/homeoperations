@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.3.0 — 2026-11-17
+
+- Added `GET /agent.md`, an entrypoint that tells an AI agent how to build a
+  reusable skill for this manual.
+- Added `GET /skill.md`, a ready-made generic skill with the instance's base URL
+  and auth method filled in.
+- Added `GET /.well-known/home-operations.json`, a discovery manifest with API,
+  auth, docs and capability links.
+- Added a **Build an agent skill** card to the API page with a copyable prompt.
+- Updated `/llms.txt`, README and add-on docs.
+
 ## 1.2.0 — 2026-11-16
 
 - Renamed the app to **Home Operations** throughout, including the package,

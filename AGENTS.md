@@ -23,6 +23,7 @@ endpoint does not update them automatically. Treat this as part of "done":
 | If you change… | Also update |
 | --- | --- |
 | an endpoint, body, field or response shape | `src/routes/llms.txt/+server.ts`, `src/lib/server/openapi.ts`, the tables and examples in `src/routes/api/+page.svelte` and `README.md` |
+| an endpoint that agents should use | `src/lib/server/agent-brief.md`, `src/lib/server/agent-skill.md`, the manifest in `src/lib/server/agent-docs.ts`, and the installed skill |
 | appliance, service or maintenance behaviour | `/llms.txt` ("Rules for AI agents" and "Notes"), the skill below |
 | an API auth or environment option | `src/lib/server/config.ts`, `.env.example`, `README.md` "Configuration", `/api` page |
 | the add-on package, image or options | `config.yaml`, `repository.yaml`, `Dockerfile`, `DOCS.md`, `README.md` "Home Assistant add-on", `CHANGELOG.md` |

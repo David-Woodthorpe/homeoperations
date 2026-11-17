@@ -184,6 +184,9 @@ Start with `GET /api/v1/meta` for section ids, categories and statistics. An age
 questions such as “what is overdue?”, “when was the boiler last serviced?”, or “where is the
 stopcock?”, and can populate an appliance from a make and model:
 
+Point an agent at **`/agent.md`** to build a skill, or give it the ready-made **`/skill.md`**.
+The machine-readable discovery manifest is `/.well-known/home-operations.json`.
+
 ```bash
 curl -X POST http://localhost:3000/api/v1/appliances \
   -H 'Content-Type: application/json' \
@@ -265,6 +268,9 @@ src/
       api-schemas.ts             zod validation for the agent API
       api-appliances.ts          section resolution and appliance merge logic
       api-serialize.ts           API response shapes and computed status
+      agent-docs.ts              /agent.md, /skill.md and discovery manifest
+      agent-brief.md             skill-builder instructions
+      agent-skill.md             ready-made generic agent skill
       http.ts / errors.ts        JSON responses and API errors
       openapi.ts                 OpenAPI 3 schema for /api/v1
   routes/
@@ -281,6 +287,9 @@ src/
     help/                        this guide, in the app
     api/                         human API documentation
     api/v1/                      JSON API for scripts and AI agents
+    agent.md/                    skill-builder entrypoint for an AI agent
+    skill.md/                    ready-made generic agent skill
+    .well-known/                 discovery manifest
     llms.txt/                    agent guide (plain text)
 server.js                        production HTTP entrypoint
 Dockerfile, compose.yaml         Docker image and local compose file

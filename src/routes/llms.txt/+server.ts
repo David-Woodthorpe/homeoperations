@@ -21,6 +21,10 @@ export const GET = wrapApi(({ url }) => {
     ? `Authentication is ENABLED. Send "Authorization: Bearer $HOME_OPERATIONS_API_KEY" (or "X-Api-Key: <key>") on every request except /health.`
     : `Authentication is currently disabled. If the owner sets HOME_OPERATIONS_API_KEY, send "Authorization: Bearer <key>".`;
 
+  const skillLinks = `Building a skill for another agent? Read ${origin}/agent.md, use the ready-made
+skill at ${origin}/skill.md, and discover the instance at
+${origin}/.well-known/home-operations.json.`;
+
   const authCurl = apiKey
     ? `  -H "Authorization: Bearer $HOME_OPERATIONS_API_KEY" \\\n`
     : '';
@@ -44,6 +48,8 @@ Today: ${isoDate()}
 Book: ${settings.book_title}
 
 ${auth}
+
+${skillLinks}
 
 Current instance: ${stats.appliances} appliances, ${stats.pages} pages,
 ${sections.length} sections, ${summary.overdue} overdue and ${summary.dueSoon} due soon.

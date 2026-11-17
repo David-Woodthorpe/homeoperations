@@ -5,7 +5,7 @@ import { env } from '$env/dynamic/private';
 const root = process.cwd();
 
 export const appName = 'Home Operations';
-export const appVersion = '1.2.0';
+export const appVersion = '1.3.0';
 
 export const dataDir = env.DATA_DIR ? path.resolve(env.DATA_DIR) : path.join(root, 'data');
 export const databaseFile = path.join(dataDir, 'home-operations.db');
